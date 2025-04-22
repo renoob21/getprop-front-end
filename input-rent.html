@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Input Rent Item | GetProp Admin</title>
+</head>
+<body id="form-page">
+    <div>
+        <a href="./index.html" class="util-button">
+            <img src="./assets/icons/arrow-left-circle.svg" alt="Back icon">
+            Back
+        </a>
+    </div>
+
+    <main id="form-container">
+        <h1>Input Properti Untuk Disewakan</h1>
+
+        <form id="insert-form">
+            <div class="input-set">
+                <label class="input-label" for="owner">Pemilik Properti</label>
+                <select class="input-field" name="owner" id="owner" required>
+                    <option value="" disabled selected>-- Pilih Pemilik --</option>
+                </select>
+            </div>
+
+
+
+            <div class="input-set">
+                <label class="input-label" for="title">Judul/Nama Properti</label>
+                <input class="input-field" name="title" id="title" type="text" required maxlength="100">
+            </div>
+
+            <div class="input-set">
+                <label class="input-label" for="description">Deskripsi</label>
+                <textarea class="input-field" name="description" id="description" maxlength="300"></textarea>
+            </div>
+
+            <div class="input-set">
+                <label class="input-label" for="address">Alamat/Lokasi Properti</label>
+                <input class="input-field" name="address" id="address" type="text" required maxlength="200">
+            </div>
+            
+            <div class="grouped-input">
+                <div class="input-set">
+                    <label class="input-label" for="lt">Luas Tanah</label>
+                    <input class="input-field" name="lt" id="lt" type="number" required maxlength="100">
+                </div>
+                <div class="input-set">
+                    <label class="input-label" for="lb">Luas Bangunan</label>
+                    <input class="input-field" name="lb" id="lb" type="number" required maxlength="100">
+                </div>
+            </div>
+            
+            <div class="grouped-input">
+                <div class="input-set">
+                    <label class="input-label" for="bedroom">Kamar Tidur</label>
+                    <input class="input-field" name="bedroom" id="bedroom" type="number" required maxlength="100">
+                </div>
+                <div class="input-set">
+                    <label class="input-label" for="bathroom">Kamar Mandi</label>
+                    <input class="input-field" name="bathroom" id="bathroom" type="number" required maxlength="100">
+                </div>
+            </div>
+
+            <div class="input-set">
+                <label class="input-label" for="monthly_rent">Biaya Sewa Bulanan</label>
+                <input class="input-field" name="monthly_rent" id="monthly_rent" type="number" required maxlength="100">
+            </div>
+            
+            <div class="input-set">
+                <label class="input-label" for="picture">Foto Properti</label>
+                <input class="input-field" name="picture" id="picture" type="file" required accept=".jpg,.jpeg,.png">
+            </div>
+
+            
+        </form>
+        <button class="util-button submit-button" onclick="insertRentalProperty()">Submit</button>
+
+        <script src="./insert.js"></script>
+
+        <div id="toast" class="toast"></div>
+    </main>
+</body>
+</html>
+
