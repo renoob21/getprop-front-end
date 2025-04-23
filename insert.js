@@ -21,7 +21,7 @@ async function insertRentalProperty() {
     }
 
     try {
-        let response = await fetch("http://127.0.0.1:3000/api/rent-property", {
+        let response = await fetch(`${window.CONFIG.API_BASE_URL}/api/rent-property`, {
             method: "post",
             body: formData,
         })
@@ -58,7 +58,7 @@ async function insertSaleProperty() {
     }
 
     try {
-        let response = await fetch("http://127.0.0.1:3000/api/sale-property", {
+        let response = await fetch(`${window.CONFIG.API_BASE_URL}/api/sale-property`, {
             method: "post",
             body: formData,
         })
@@ -88,7 +88,7 @@ async function insertSaleProperty() {
 document.addEventListener("DOMContentLoaded", async function() {
     const ownerEl = document.getElementById("owner");
 
-    let ownerList = await fetch("http://127.0.0.1:3000/api/owner")
+    let ownerList = await fetch(`${window.CONFIG.API_BASE_URL}/api/owner`)
                                 .then(res => res.json())
                                 .then(json => json.data);
     
