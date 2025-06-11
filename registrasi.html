@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="config.js" defer></script>
+    <title>Registrasi Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="register-page">
+    <div class="main-wrapper">
+      <div class="container">
+        <div class="image-slider">
+          <img id="slider-image" src="./assets/house1.jpg" alt="Home Sale">
+          <div class="slider-caption">Jual-Sewa Property Hunianmu,<br>Beli-Sewa Sesuai Kebutuhanmu</div>
+        </div>
+  
+        <div class="form-section">
+          <h1>Sign Up, Create your account</h1>
+          <p>Already have an account? <a href="./login.html">Sign in</a></p>
+  
+          <form id="register-form">
+            
+            
+            <div class="form-group-detail">
+              <input type="text" name="full_name" id="full_name" placeholder="Full Name" required>
+            <input type="text" name="address" id="address" placeholder="Address" required>
+            <input type="email" name="email_address" id="email_address" placeholder="Email" required>
+            <div class="input-group-registrasi">
+                <input type="password" placeholder="Enter your password" name="password" id="password" required>
+                <img src="https://img.icons8.com/ios-glyphs/30/1f2937/visible--v1.png" class="toggle-password" id="togglePassword" />
+              </div>
+              <div class="input-group-registrasi">
+                <input type="password" placeholder="Re-enter your password" id="rePassword" required>
+                <img src="https://img.icons8.com/ios-glyphs/30/1f2937/visible--v1.png" class="toggle-password" id="toggleRePassword" />
+              </div>
+            </div>
+              
+  
+            <label class="checkbox">
+              <input type="checkbox" required>
+              I agree to the <a href="#">Terms & Conditions</a>
+            </label>
+  
+            <button type="submit" class="create-btn">Create account</button>
+          </form>
+  
+          <div class="divider">- - - - - - - - - - Or register with - - - - - - - - - -</div>
+          <button class="google-btn">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" class="google-icon">
+            Google
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <div id="toast" class="toast"></div>
+</body>
+</html>

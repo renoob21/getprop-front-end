@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="config.js" defer></script>
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-icon">🔐</div>
+      <h2>Sign in with email</h2>
+      <p class="subtitle">Masuk untuk menjual, menyewakan, membeli, dan menyewa property hunian</p>
+
+      <form id="login-form">
+        <div class="input-group">
+          <img src="https://img.icons8.com/ios-glyphs/30/1f2937/new-post.png" class="icon" />
+          <input type="email" placeholder="Email" name="email_address" id="email_address" required />
+        </div>
+        <div class="input-group">
+          <img src="https://img.icons8.com/ios-glyphs/30/1f2937/lock--v1.png" class="icon" id="togglePassword"/>
+          <input type="password" placeholder="Password" id="password" name="password" required />
+          <img src="https://img.icons8.com/ios-glyphs/30/1f2937/visible--v1.png" class="toggle-password" id="togglePassword" />
+        </div>
+
+        <div class="register-signup">
+            <span class="left-link">Don't have an account? <a href="./registrasi.html">Sign Up</a></span>
+        </div>
+
+        <button type="submit" class="login-btn">Log In</button>
+      </form>
+
+      <div class="divider">Or sign in with</div>
+
+      <div class="social-login">
+        <a href="#"><img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" /></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+  <div id="toast" class="toast"></div>
+</body>
+</html>

@@ -1,30 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>GetProp Admin</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JBSHome - Properti</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="navbar.css">
+  <script defer src="config.js"></script>
 </head>
 <body>
-    <main id="admin-home">
-        <div class="home-selection" id="rent">
-            <a href="./input-rent.html">
-                <img src="./assets/icons/rent.png" alt="Property rental icon">
-                <p>
-                    Input Properti Rental
-                </p>
-            </a>
-        </div>
 
-        <div class="home-selection" id="sale">
-            <a href="./input-sale.html">
-                <img src="./assets/icons/sale.png" alt="Property sale icon">
-                <p>
-                    Input Properti Jual
-                </p>
-            </a>
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar" role="navigation" aria-label="Navigasi Utama">
+    <script src="navbar.js" defer></script>
+    <div class="nav-left">
+      <div class="logo" tabindex="0" aria-label="Logo JBSHome">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="20" height="20" fill="#2a2a2a">
+          <path d="M3 11.5L12 3l9 8.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8.5z"/>
+        </svg>
+        JBSHome
+      </div>
+      <ul class="nav-menu">
+        <li><a href="/" class="active">Beranda</a></li>
+        <li><a href="./properti-jual-all.html" >Properti Dijual</a></li>
+        <li><a href="./properti-sewa-all.html" >Properti Disewakan</a></li>
+      </ul>
+    </div>
+    <div id="user-nav" class="nav-right" tabindex="0" aria-label="Menu pengguna">
+      <a href="login.html" class="btn-secondary">Login</a>
+      <a href="registrasi.html" class="btn-primary">Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" role="banner" aria-label="Pilihan solusi properti">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-subtitle">Halo teman huni</p>
+      <h1 class="hero-title">PILIHAN SOLUSI PROPERTI</h1>
+      <p class="hero-text">
+        Solusi all-in-one untuk segala kebutuhan properti Anda! Baik beli maupun sewa kami siap membantu dengan layanan profesional dan kemudahan terbaik. Temukan properti impian Anda bersama kami!
+      </p>
+      <a class="btn" href="#explore" aria-label="Mulai Eksplor">MULAI EKSPLOR</a>
+    </div>
+  </section>
+
+  <div id="explore"></div>
+
+  <!-- Rekomendasi Beli Properti -->
+  <section class="section">
+    <div class="container">
+      <div class="header-section">
+        <div>
+          <h2>Rekomendasi Beli Properti</h2>
+          <p>Jelajahi pilihan properti unggulan kami yang telah dipilih dengan cermat. Setiap listing memberikan gambaran tentang rumah dan investasi luar biasa. Klik "Lihat Detail" untuk informasi lebih lanjut.</p>
         </div>
-    </main>
+        <a href="./properti-jual-all.html">
+<button class="btn" type="button">Lihat Semua Properti</button>
+        </a>
+      </div>
+
+      <div id="sale-list" class="cards">
+        
+      </div>
+
+      <div class="pagination">
+        <button class="btn-prev" type="button" aria-label="Halaman Sebelumnya">&#8592;</button>
+        <button class="btn-next" type="button" aria-label="Halaman Selanjutnya">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rekomendasi Sewa Properti -->
+  <section class="section">
+    <div class="container">
+      <div class="header-section">
+        <div>
+          <h2>Rekomendasi Sewa Properti</h2>
+          <p>Jelajahi pilihan properti unggulan kami yang telah dipilih dengan cermat untuk dapat kamu sewa. Setiap listing memberikan gambaran tentang rumah/apartemen. Klik <span class="highlight">'Lihat Detail'</span> untuk info lebih lanjut.</p>
+        </div>
+        <a href="./properti-sewa-all.html">
+          <button class="btn" type="button">Lihat Semua Properti</button>
+        </a>
+      </div>
+
+      <div id="rent-list" class="cards">
+        
+      </div>
+
+
+      <div class="pagination">
+        <button class="btn-prev" type="button" aria-label="Halaman Sebelumnya">←</button>
+        <button class="btn-next" type="button" aria-label="Halaman Selanjutnya">→</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h2>JBSHome</h2>
+        <p>Platform untuk memenuhi kebutuhan hunianmu</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Twitter" class="social-icon twitter" tabindex="0">T</a>
+          <a href="#" aria-label="Facebook" class="social-icon facebook" tabindex="0">F</a>
+          <a href="#" aria-label="Instagram" class="social-icon instagram" tabindex="0">I</a>
+          <a href="#" aria-label="Github" class="social-icon github" tabindex="0">G</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h3>Perusahaan</h3>
+          <ul>
+            <li><a href="#" tabindex="0">Tentang</a></li>
+            <li><a href="#" tabindex="0">Features</a></li>
+            <li><a href="#" tabindex="0">Karir</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Bantuan</h3>
+          <ul>
+            <li><a href="#" tabindex="0">Customer Support</a></li>
+            <li><a href="#" tabindex="0">Detail Pengiriman</a></li>
+            <li><a href="#" tabindex="0">Ketentuan dan Privasi</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>FAQ</h3>
+          <ul>
+            <li><a href="#" tabindex="0">Akun</a></li>
+            <li><a href="#" tabindex="0">Pengiriman</a></li>
+            <li><a href="#" tabindex="0">Pemesanan</a></li>
+            <li><a href="#" tabindex="0">Pembayaran</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <!-- <small>LivinSpace © 2000-2023, All Rights Reserved</small> -->
+    </div>
+  </footer>
+
+ 
 </body>
+  <script src="index.js"></script> 
 </html>

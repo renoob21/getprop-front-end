@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="navbar.css">
+    <script src="config.js"></script>
+    <script src="navbar.js"></script>
+    <script src="riwayat-transaksi.js"></script>
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: var(--bg-neutral);
+        }
+
+        .transaction-history-container {
+            max-width: 900px; 
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .transaction-history-list {
+            display: grid;
+            gap: 20px; /* Spacing between cards */
+            grid-template-columns: 1fr; /* Single column layout */
+            margin-top: 24px; 
+        }
+
+        .transaction-item.card {
+            background-color: white; /* Ensure card background is white for shadow visibility */
+            padding: 16px;
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: row; /* Horizontal layout for the card */
+            align-items: flex-start; /* Align items to the top */
+            gap: 16px; /* Space between image and content */
+            min-height: auto; /* Remove fixed min-height, let content define it */
+            border-radius: 12px; /* Match border-radius from index.css .card */
+            border: 1px solid var(--border-div); /* Softer border than primary, or use existing from index.css if preferred */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Default subtle shadow */
+            transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
+        }
+
+        /* Hover effect from index.css .card:hover will still apply for transform and enhanced shadow */
+        .transaction-item.card:hover {
+          box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); /* Enhanced shadow on hover */
+          transform: translateY(-5px);
+        }
+
+
+        .transaction-item .card-image-container {
+            flex-shrink: 0; /* Prevent image container from shrinking */
+            width: 100px; /* Slightly smaller image */
+            height: 80px; /* Slightly smaller image */
+        }
+
+        .transaction-item .card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            border-radius: 8px;
+        }
+        
+        .transaction-item .card-content-flex {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            flex-grow: 1; 
+            min-width: 0; 
+        }
+
+        .transaction-item .card-main-info {
+            margin-bottom: 10px; 
+        }
+
+        .transaction-item .card-title {
+            font-size: 1.1rem; /* Adjusted for simplicity */
+            margin-bottom: 2px;
+            color: var(--text-primary);
+        }
+
+        .transaction-item .property-address {
+            font-size: 0.8rem; /* Adjusted for simplicity */
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+        
+        .transaction-status.card-tag {
+            display: inline-block;
+            margin-top: 0; 
+            margin-bottom: 6px; /* Adjusted margin */
+            text-transform: capitalize; 
+            font-size: 0.75rem; /* Adjusted for simplicity */
+            padding: 3px 8px; 
+            border-radius: 20px; 
+            font-weight: 600; 
+        }
+
+        .transaction-item .card-price {
+            margin-top: 0; 
+            margin-bottom: 8px;
+            font-size: 1.05rem; /* Adjusted for simplicity */
+            color: var(--accent); 
+            font-weight: 700; 
+        }
+
+        .transaction-item .sale-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Adjusted minmax */
+            gap: 4px 8px; /* Adjusted gap */
+            font-size: 0.8rem; /* Adjusted for simplicity */
+            color: var(--text-secondary);
+            margin-bottom: 10px; 
+        }
+        
+        .transaction-item .sale-details-grid p {
+            margin-bottom: 1px; 
+        }
+
+
+        .transaction-item .sale-details-grid strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        /* Removed .feature-chips-container and related styles */
+
+        .transaction-item .btn-detail {
+            margin-top: auto; 
+            padding: 6px 12px; /* Adjusted padding */
+            font-size: 0.85rem; /* Adjusted font size */
+            width: auto; 
+            align-self: flex-end; 
+        }
+
+        /* Status-specific colors using CSS variables from index.css */
+        .status-paid { background-color: var(--accent); color: white; }
+        .status-unpaid { background-color: var(--warning); color: var(--text-primary); }
+        .status-cancelled { background-color: var(--error); color: white; }
+        .status-processing { background-color: var(--primary); color: white; } 
+
+        /* SVG icon helper - kept in case needed elsewhere, but not used by chips now */
+        .svg-icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.125em; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav id="navbar" class="navbar" role="navigation" aria-label="Navigasi Utama">
+        <script src="navbar.js" defer></script>
+        <div class="nav-left">
+        <div class="logo" tabindex="0" aria-label="Logo JBSHome">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="20" height="20" fill="#2a2a2a">
+            <path d="M3 11.5L12 3l9 8.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8.5z"/>
+            </svg>
+            JBSHome
+        </div>
+        <ul class="nav-menu">
+            <li><a href="/" >Beranda</a></li>
+            <li><a href="./properti-jual-all.html" >Properti Dijual</a></li>
+            <li><a href="./properti-sewa-all.html" >Properti Disewakan</a></li>
+        </ul>
+        </div>
+        <div id="user-nav" class="nav-right" tabindex="0" aria-label="Menu pengguna">
+        <a href="login.html" class="btn-secondary">Login</a>
+        <a href="registrasi.html" class="btn-primary">Sign Up</a>
+        </div>
+    </nav>
+
+    <div class="transaction-history-container section">
+        <ul class="nav-menu">
+            <li><a href="./riwayat-transaksi.html?type=sale-transaction" id="transaksi-beli" class="active">Transaksi Pembelian</a></li>
+            <li><a href="./riwayat-transaksi.html?type=rent-transaction" id="transaksi-sewa">Transaksi Sewa</a></li>
+        </ul>
+        
+
+        <div id="history-container" class="transaction-history-list">
+            <p>Anda tidak memiliki riwayat transaksi</p>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h2>JBSHome</h2>
+        <p>Platform untuk memenuhi kebutuhan hunianmu</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Twitter" class="social-icon twitter" tabindex="0">T</a>
+          <a href="#" aria-label="Facebook" class="social-icon facebook" tabindex="0">F</a>
+          <a href="#" aria-label="Instagram" class="social-icon instagram" tabindex="0">I</a>
+          <a href="#" aria-label="Github" class="social-icon github" tabindex="0">G</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h3>Perusahaan</h3>
+          <ul>
+            <li><a href="#" tabindex="0">Tentang</a></li>
+            <li><a href="#" tabindex="0">Features</a></li>
+            <li><a href="#" tabindex="0">Karir</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Bantuan</h3>
+          <ul>
+            <li><a href="#" tabindex="0">Customer Support</a></li>
+            <li><a href="#" tabindex="0">Detail Pengiriman</a></li>
+            <li><a href="#" tabindex="0">Ketentuan dan Privasi</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>FAQ</h3>
+          <ul>
+            <li><a href="#" tabindex="0">Akun</a></li>
+            <li><a href="#" tabindex="0">Pengiriman</a></li>
+            <li><a href="#" tabindex="0">Pemesanan</a></li>
+            <li><a href="#" tabindex="0">Pembayaran</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <!-- <small>LivinSpace © 2000-2023, All Rights Reserved</small> -->
+    </div>
+  </footer>
+    </body>
+</html>
