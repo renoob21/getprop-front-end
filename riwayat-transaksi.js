@@ -19,7 +19,7 @@ async function populateSaleTransaction() {
 
     if (!user_session) {
         let ref = window.location.href;
-        window.location.href = `/login.html?ref=${ref}`
+        window.location.href = `./login.html?ref=${ref}`
     }
 
     let response = await fetch(`${window.CONFIG.API_BASE_URL}/api/my-sale-transaction`, {
@@ -34,7 +34,7 @@ async function populateSaleTransaction() {
     if (!response.success) {
         if (response.message === "Unable to retrieve user session") {
             let ref = window.location.href;
-            window.location.href = `/login.html?ref=${ref}`;
+            window.location.href = `./login.html?ref=${ref}`;
         }
 
         return;
@@ -76,7 +76,7 @@ async function populateSaleTransaction() {
 
         if (trans.status === "Unpaid") {
             let a = document.createElement("a");
-            a.href = `/sale-payment.html?transaction_id=${trans.sale_transaction_id}`;
+            a.href = `./sale-payment.html?transaction_id=${trans.sale_transaction_id}`;
             a.classList.add("btn-detail");
             a.textContent = "Bayar Sekarang";
             div.getElementsByClassName("card-content-flex")[0].appendChild(a)
@@ -100,7 +100,7 @@ async function populateRentTransaction() {
 
     if (!user_session) {
         let ref = window.location.href;
-        window.location.href = `/login.html?ref=${ref}`
+        window.location.href = `./login.html?ref=${ref}`
     }
 
     let response = await fetch(`${window.CONFIG.API_BASE_URL}/api/my-rent-transaction`, {
@@ -115,7 +115,7 @@ async function populateRentTransaction() {
     if (!response.success) {
         if (response.message === "Unable to retrieve user session") {
             let ref = window.location.href;
-            window.location.href = `/login.html?ref=${ref}`;
+            window.location.href = `./login.html?ref=${ref}`;
         }
 
         return;
@@ -158,7 +158,7 @@ async function populateRentTransaction() {
 
         if (trans.status === "Unpaid") {
             let a = document.createElement("a");
-            a.href = `/rent-payment.html?transaction_id=${trans.rent_transaction_id}`;
+            a.href = `./rent-payment.html?transaction_id=${trans.rent_transaction_id}`;
             a.classList.add("btn-detail");
             a.textContent = "Bayar Sekarang";
             div.getElementsByClassName("card-content-flex")[0].appendChild(a)

@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
   
   
 })
@@ -95,7 +95,7 @@ document.getElementById("login-form").addEventListener("submit", async function 
   let ref = urlParams.get("ref");
 
   if (!ref) {
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
   } else {
     window.location.href = ref;
   }

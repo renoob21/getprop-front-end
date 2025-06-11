@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         .then(res => {
             if (res.status === 404 || res.status === 403) {
                 const currentHref = window.location.href;
-                window.location.href = `/${res.status}.html?ref=${currentHref}`;
+                window.location.href = `./${res.status}.html?ref=${currentHref}`;
                 return;
             }
 
@@ -120,7 +120,7 @@ async function submitPurchase() {
 
     if (!user_session) {
         let ref = window.location.href;
-        window.location.href = `/login.html?ref=${ref}`
+        window.location.href = `./login.html?ref=${ref}`
     }
 
     formData = new FormData(saleForm);
@@ -152,10 +152,10 @@ async function submitPurchase() {
     if (!response.success) {
         if (response.message === "Unable to retrieve user session") {
             let ref = window.location.href;
-            window.location.href = `/login.html?ref=${ref}`;
+            window.location.href = `./login.html?ref=${ref}`;
         }
     } else {
         
-        window.location.href = `/sale-payment.html?transaction_id=${response.data.sale_transaction_id}`;
+        window.location.href = `./sale-payment.html?transaction_id=${response.data.sale_transaction_id}`;
     }
 }

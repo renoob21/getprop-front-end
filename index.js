@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   .then(res => {
             if (res.status === 404 || res.status === 403) {
                 const currentHref = window.location.href;
-                window.location.href = `/${res.status}.html?ref=${currentHref}`;
+                window.location.href = `./${res.status}.html?ref=${currentHref}`;
                 return;
             }
 

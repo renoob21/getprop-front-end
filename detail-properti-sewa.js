@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         .then(res => {
             if (res.status === 404 || res.status === 403) {
                 const currentHref = window.location.href;
-                window.location.href = `/${res.status}.html?ref=${currentHref}`;
+                window.location.href = `./${res.status}.html?ref=${currentHref}`;
                 return;
             }
 
@@ -142,7 +142,7 @@ async function submitRent() {
 
     if (!user_session) {
         let ref = window.location.href;
-        window.location.href = `/login.html?ref=${ref}`
+        window.location.href = `./login.html?ref=${ref}`
     }
 
     formData = new FormData(rentForm);
@@ -172,9 +172,9 @@ async function submitRent() {
     if (!response.success) {
         if (response.message === "Unable to retrieve user session") {
             let ref = window.location.href;
-            window.location.href = `/login.html?ref=${ref}`;
+            window.location.href = `./login.html?ref=${ref}`;
         }
     } else {
-        window.location.href = `/rent-payment.html?transaction_id=${response.data.rent_transaction_id}`;
+        window.location.href = `./rent-payment.html?transaction_id=${response.data.rent_transaction_id}`;
     }
 }

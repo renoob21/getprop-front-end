@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!user_session) {
         let ref = window.location.href;
-        window.location.href = `/login.html?ref=${ref}`
+        window.location.href = `./login.html?ref=${ref}`
     }
 
     let rent_transaction_id = urlParams.get("transaction_id");
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             .then(res => {
             if (res.status === 404 || res.status === 403) {
                 const currentHref = window.location.href;
-                window.location.href = `/${res.status}.html?ref=${currentHref}`;
+                window.location.href = `./${res.status}.html?ref=${currentHref}`;
                 return;
             }
 
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!response.success) {
         if (response.message === "Unable to retrieve user session") {
             let ref = window.location.href;
-            window.location.href = `/login.html?ref=${ref}`;
+            window.location.href = `./login.html?ref=${ref}`;
         }
 
         return;
@@ -71,7 +71,7 @@ async function payRent() {
 
     if (!user_session) {
         let ref = window.location.href;
-        window.location.href = `/login.html?ref=${ref}`
+        window.location.href = `./login.html?ref=${ref}`
     }
 
 
@@ -87,7 +87,7 @@ async function payRent() {
     if (!response.success) {
         if (response.message === "Unable to retrieve user session") {
             let ref = window.location.href;
-            window.location.href = `/login.html?ref=${ref}`;
+            window.location.href = `./login.html?ref=${ref}`;
         }
 
         return;
