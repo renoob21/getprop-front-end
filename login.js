@@ -1,16 +1,4 @@
-const togglePassword = document.getElementById("togglePassword");
 
-togglePassword.addEventListener("mousedown", () => {
-  passwordField.type = "text";
-});
-
-togglePassword.addEventListener("mouseup", () => {
-  passwordField.type = "password";
-});
-
-togglePassword.addEventListener("mouseleave", () => {
-  passwordField.type = "password";
-});
 
 function showToast(message, status = 'success', duration = 4000) {
     const toast = document.getElementById('toast');
@@ -26,6 +14,22 @@ function showToast(message, status = 'success', duration = 4000) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const togglePassword = document.getElementById("togglePassword");
+  const passwordField = document.getElementById("password");
+
+  togglePassword.addEventListener("mousedown", () => {
+    passwordField.type = "text";
+  });
+
+  togglePassword.addEventListener("mouseup", () => {
+    passwordField.type = "password";
+  });
+
+  togglePassword.addEventListener("mouseleave", () => {
+    passwordField.type = "password";
+  });
+
+
   let user_session = JSON.parse(window.localStorage.getItem("session-data"));
 
     if (!user_session) {
